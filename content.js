@@ -54,6 +54,11 @@ function insertStremioButtonTrakt() {
 
     if (stremioButtonAdded) return;
 
+    const episodeMatch = window.location.href.match(/\/seasons\/(\d+)\/episodes\/(\d+)/);
+    if (episodeMatch) {
+        return false;
+    }
+
     // Check if the current URL contains '/shows/' (for TV shows) or '/movies/' (for movies)
     if (window.location.href.includes('/shows/') || window.location.href.includes('/movies/')) {
         // Get the IMDb ID from the external link on Trakt.tv
