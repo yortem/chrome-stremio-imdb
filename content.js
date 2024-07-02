@@ -18,7 +18,16 @@ function insertStremioButton() {
             const imdbIdMatch = window.location.pathname.match(/\/title\/(tt\d+)/);
             if (imdbIdMatch) {
                 const imdbId = imdbIdMatch[1];
-                const stremioLink = `stremio://detail/movie/${imdbId}`;
+                let stremioLink = `stremio://detail/movie/${imdbId}`;
+
+                // Check if it's a TV Series
+                const ipcInlineListItems = document.querySelectorAll('.ipc-inline-list__item');
+                ipcInlineListItems.forEach(item => {
+                    if (item.textContent.includes('TV Series')) {
+                        stremioLink = `stremio://detail/series/${imdbId}`;
+                    }
+                });
+
                 window.open(stremioLink, '_blank');
             }
         });
