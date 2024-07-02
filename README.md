@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Help you open stremio movies directly from IMDB or Trakt.
+Help you open Stremio movies or shows directly from IMDB or Trakt.
 
 ## What it does
 
