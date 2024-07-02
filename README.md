@@ -16,7 +16,7 @@ Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist
 - Make sure "Developer Mode" is enabled on the top corner of the page
 -  Click on "Load unpacked" 
 - Select the folder you just unzipped
-- See a new button on IMDB pages of movies and shows
+- See a new button on IMDB \ Trakt pages of movies and shows
 
 ![Screenshot](screenshot-stremio-imdb.png)
 ![Screenshot](screenshot-stremio-trakt.png)
