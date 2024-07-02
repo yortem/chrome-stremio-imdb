@@ -36,7 +36,7 @@ function insertStremioButtonIMDB() {
                 // Open the link using a temporary anchor element
                 const tempLink = document.createElement('a');
                 tempLink.href = stremioLink;
-                tempLink.target = '_blank';
+                tempLink.target = '_self';
                 tempLink.style.display = 'none';
                 document.body.appendChild(tempLink);
                 tempLink.click();
@@ -83,7 +83,7 @@ function insertStremioButtonTrakt() {
                 // Open the link using a temporary anchor element
                 const tempLink = document.createElement('a');
                 tempLink.href = stremioLink;
-                tempLink.target = '_blank';
+                tempLink.target = '_self';
                 tempLink.style.display = 'none';
                 document.body.appendChild(tempLink);
                 tempLink.click();
