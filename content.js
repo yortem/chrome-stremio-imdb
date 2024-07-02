@@ -1,5 +1,10 @@
+let stremioButtonAdded = false;
+
 // Function to insert a new button before the IMDb watchlist button
 function insertStremioButtonIMDB() {
+
+    if (stremioButtonAdded) return;
+
     // Select the IMDb watchlist button
     const imdbButton = document.querySelector('[data-testid="tm-box-wl-button"]');
     if (imdbButton) {
@@ -28,16 +33,27 @@ function insertStremioButtonIMDB() {
                     }
                 });
 
-                window.open(stremioLink, '_blank');
+                // Open the link using a temporary anchor element
+                const tempLink = document.createElement('a');
+                tempLink.href = stremioLink;
+                tempLink.target = '_blank';
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
             }
         });
 
         // Insert the Stremio button before the IMDb button
         imdbButton.parentNode.insertBefore(stremioButton, imdbButton);
+        stremioButtonAdded = true;
     }
 }
 
 function insertStremioButtonTrakt() {
+
+    if (stremioButtonAdded) return;
+
     // Check if the current URL contains '/shows/' (for TV shows) or '/movies/' (for movies)
     if (window.location.href.includes('/shows/') || window.location.href.includes('/movies/')) {
         // Get the IMDb ID from the external link on Trakt.tv
@@ -64,7 +80,14 @@ function insertStremioButtonTrakt() {
                     stremioLink = `stremio://detail/series/${imdbId}`;
                 }
 
-                window.open(stremioLink, '_blank');
+                // Open the link using a temporary anchor element
+                const tempLink = document.createElement('a');
+                tempLink.href = stremioLink;
+                tempLink.target = '_blank';
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
             });
 
             // Find the action-buttons element on the page
@@ -72,6 +95,7 @@ function insertStremioButtonTrakt() {
             if (actionButtons) {
                 // Insert the Stremio button before the first child of action-buttons
                 actionButtons.insertBefore(stremioButton, actionButtons.firstChild);
+                stremioButtonAdded = true;
             }
         }
     }

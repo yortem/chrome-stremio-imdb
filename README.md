@@ -8,7 +8,9 @@ Help you open Stremio movies or shows directly from IMDB or Trakt.
 
 Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist button. The button opens the movie page on Stremio.
 
-## How to install
+The plugin works on Chrome and on Firefox
+
+## How to install on Chrome
 
 - Download this repository as zip
 - Unzip the content to any folder
@@ -17,6 +19,16 @@ Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist
 -  Click on "Load unpacked" 
 - Select the folder you just unzipped
 - See a new button on IMDB \ Trakt pages of movies and shows
+
+## How to install on Firefox
+
+- Download this repository as zip
+- Unzip the content to any folder
+- Go to "about:debugging" in the url bar 
+- Click on "This Firefox"
+- Click on "Load Temporary Add-on"
+- Choose the file "manifest.json"
+- On the first visit to IMDB or Trakt, click on the extensions icon and then near this extension, mark it as "always allow on imdb" or trakt
 
 ![Screenshot](screenshot-stremio-imdb.png)
 ![Screenshot](screenshot-stremio-trakt.png)
