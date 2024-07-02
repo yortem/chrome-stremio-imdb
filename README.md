@@ -1,12 +1,12 @@
-# IMDB Open in Stremio
+# IMDB Open in Stremio\Trakt
 
 ## Purpose
 
-Help you open stremio movies directly from IMDB.
+Help you open stremio movies directly from IMDB or Trakt.
 
 ## What it does
 
-Add a button to the IMDB page of movies, next to the Wishlist button. The button opens the movie page on Stremio.
+Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist button. The button opens the movie page on Stremio.
 
 ## How to install
 
@@ -19,5 +19,6 @@ Add a button to the IMDB page of movies, next to the Wishlist button. The button
 - See a new button on IMDB pages of movies and shows
 
 ![Screenshot](screenshot-stremio-imdb.png)
+![Screenshot](screenshot-stremio-trakt.png)
 
 This is an unofficial chrome extension of neither IMDB \ Stremio

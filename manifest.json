@@ -1,6 +1,6 @@
 {
-  "name": "IMDB Open in Stremio",
-  "description": "Allow you to open movies you see on IMDB straight to your Stremio",
+  "name": "IMDB Open in Stremio/Trakt",
+  "description": "Allow you to open movies you see on IMDB or Trakt straight to your Stremio",
   "homepage_url": "https://www.journey.co.il",
   "version": "1.0.0",
   "manifest_version": 3,
@@ -15,7 +15,9 @@
       "run_at": "document_idle",
       "js": ["content.js"],
       "matches": [
-        "https://www.imdb.com/title/*"
+        "https://www.imdb.com/title/*",
+        "https://trakt.tv/movies/*",
+        "https://trakt.tv/shows/*"
       ]
     }
   ],
@@ -24,6 +26,7 @@
     "scripting"
   ],
   "host_permissions": [
-    "https://www.imdb.com/*"
+    "https://www.imdb.com/*",
+    "https://trakt.tv/*"
   ]
 }
