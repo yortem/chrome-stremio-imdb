@@ -1,4 +1,4 @@
-# IMDB open in Stremio
+# IMDB Open in Stremio
 
 ## Purpose
 
