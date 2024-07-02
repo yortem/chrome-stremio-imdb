@@ -53,12 +53,6 @@ function insertStremioButtonIMDB() {
 function insertStremioButtonTrakt() {
 
     if (stremioButtonAdded) return;
-    
-    // Check if it's an episode page
-    const episodeMatch = window.location.href.match(/\/seasons\/(\d+)\/episodes\/(\d+)/);
-    if (episodeMatch) {
-        return false;
-    }
 
     // Check if the current URL contains '/shows/' (for TV shows) or '/movies/' (for movies)
     if (window.location.href.includes('/shows/') || window.location.href.includes('/movies/')) {
@@ -80,6 +74,10 @@ function insertStremioButtonTrakt() {
             // Add click event listener to open Stremio link
             stremioButton.addEventListener('click', function() {
                 let stremioLink = `stremio:///detail/movie/${imdbId}`;
+
+                if (window.location.href.includes('/shows/')) {
+                    stremioLink = `stremio:///detail/series/${imdbId}`;
+                }
 
                 // Open the link using a temporary anchor element
                 const tempLink = document.createElement('a');
