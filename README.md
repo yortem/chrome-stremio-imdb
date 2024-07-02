@@ -1,4 +1,4 @@
-# IMDB Open in Stremio\Trakt
+# IMDB \ Trakt Open in Stremio
 
 ## Purpose
 
