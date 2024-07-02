@@ -31,6 +31,8 @@ The plugin works on Chrome and on Firefox
 - On the first visit to IMDB or Trakt, click on the extensions icon and then near this extension, mark it as "always allow on imdb" or trakt
 
 ![Screenshot](screenshot-stremio-imdb.png)
-![Screenshot](screenshot-stremio-trakt.png)
+![Screenshot 2](screenshot-stremio-trakt.png)
 
 This is an unofficial chrome extension of neither IMDB \ Trakt \ Stremio
+
+To discuss the extension, go to this [post on reddit](https://www.reddit.com/r/StremioAddons/comments/1dtvjmk/chrome_extension_open_the_movie_in_stremio/)
