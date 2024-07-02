@@ -1,0 +1,29 @@
+{
+  "name": "IMDB open in Stremio",
+  "description": "Allow you to open movies you see on IMDB straight to your Stremio",
+  "homepage_url": "https://www.journey.co.il",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "favicon.png",
+    "32": "favicon.png",
+    "48": "favicon.png",
+    "128": "favicon.png"
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_idle",
+      "js": ["content.js"],
+      "matches": [
+        "https://www.imdb.com/title/*"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.imdb.com/*"
+  ]
+}
