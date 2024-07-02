@@ -21,4 +21,4 @@ Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist
 ![Screenshot](screenshot-stremio-imdb.png)
 ![Screenshot](screenshot-stremio-trakt.png)
 
-This is an unofficial chrome extension of neither IMDB \ Stremio
+This is an unofficial chrome extension of neither IMDB \ Trakt \ Stremio
