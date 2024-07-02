@@ -20,4 +20,4 @@ Add a button to the IMDB page of movies, next to the Wishlist button. The button
 
 ![Screenshot](screenshot-stremio-imdb.png)
 
-This is an unofficial chrome extention of neither IMDB \ Stremio.
+This is an unofficial chrome extension of neither IMDB \ Stremio
