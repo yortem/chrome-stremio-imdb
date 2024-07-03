@@ -38,6 +38,7 @@ The plugin works on Chrome and on Firefox
 
 ![Screenshot](screenshot-stremio-imdb.png)
 ![Screenshot 2](screenshot-stremio-trakt.png)
+![Screenshot 3](screenshot-stremio-letterboxd.jpg)
 
 This is an unofficial chrome extension of neither IMDB \ Trakt \ Stremio
 
