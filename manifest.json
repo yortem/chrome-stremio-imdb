@@ -17,7 +17,8 @@
       "matches": [
         "https://www.imdb.com/title/*",
         "https://trakt.tv/movies/*",
-        "https://trakt.tv/shows/*"
+        "https://trakt.tv/shows/*",
+        "https://letterboxd.com/film/*"
       ]
     }
   ],
@@ -27,6 +28,7 @@
   ],
   "host_permissions": [
     "https://www.imdb.com/*",
-    "https://trakt.tv/*"
+    "https://trakt.tv/*",
+    "https://letterboxd.com/*"
   ]
 }

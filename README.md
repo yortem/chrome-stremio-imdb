@@ -10,6 +10,12 @@ Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist
 
 The plugin works on Chrome and on Firefox
 
+## Which sites are supported?
+
+- IMDB
+- Trakt
+- letterboxd
+
 ## How to install on Chrome
 
 - Download this repository as zip

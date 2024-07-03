@@ -105,6 +105,52 @@ function insertStremioButtonTrakt() {
     }
 }
 
+function insertStremioButtonLetterboxd() {
+    if (stremioButtonAdded) return;
+
+    // Check if the current URL contains '/film/' (for movies)
+    if (window.location.href.includes('/film/')) {
+        // Get the IMDb ID from the external link on Letterboxd
+        const imdbLinkElement = document.querySelector('a[data-track-action="IMDb"]');
+        if (imdbLinkElement) {
+            const imdbHref = imdbLinkElement.getAttribute('href');
+            const imdbId = imdbHref.split('/')[imdbHref.split('/').length - 2]; // Extract IMDb ID from the href attribute
+
+            // Create the new Stremio button
+            const stremioButton = document.createElement('button');
+            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 5px;float: left;color: #5c58ee;">Open in Stremio</span>';
+            stremioButton.classList.add('ipc-split-button__btn');
+            stremioButton.setAttribute('role', 'button');
+            stremioButton.setAttribute('style', 'width: 100%;cursor:pointer;border-color: #5c58ee;height:54px;border-radius: 3px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
+            stremioButton.setAttribute('tabindex', '0');
+            stremioButton.setAttribute('aria-disabled', 'false');
+            stremioButton.style.marginRight = '10px';  // Adjust margin as needed
+
+            // Add click event listener to open Stremio link
+            stremioButton.addEventListener('click', function() {
+                let stremioLink = `stremio:///detail/movie/${imdbId}`;
+
+                // Open the link using a temporary anchor element
+                const tempLink = document.createElement('a');
+                tempLink.href = stremioLink;
+                tempLink.target = '_self';
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+            });
+
+            // Find the 'watch' element on the page
+            const watchElement = document.querySelector('.js-actions-panel');
+            if (watchElement) {
+                // Insert the Stremio button inside the 'watch' element
+                watchElement.insertBefore(stremioButton, watchElement.firstChild);
+                stremioButtonAdded = true;
+            }
+        }
+    }
+}
+
 if (window.location.hostname === 'www.imdb.com') {
     insertStremioButtonIMDB();
 }
@@ -112,3 +158,8 @@ if (window.location.hostname === 'www.imdb.com') {
 if (window.location.hostname === 'trakt.tv') {
     insertStremioButtonTrakt();
 }
+
+if (window.location.hostname === 'letterboxd.com') {
+    insertStremioButtonLetterboxd();
+}
+
