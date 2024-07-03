@@ -3,9 +3,8 @@ let stremioButtonAdded = false;
 
 // Function to insert a new button before the IMDb watchlist button
 function insertStremioButtonIMDB() {
-    console.log('OIS: Run IMDB function');
-
     if (stremioButtonAdded) return;
+    console.log('OIS: Run IMDB function');
 
     // Select the IMDb watchlist button
     const imdbButton = document.querySelector('[data-testid="tm-box-wl-button"]');
@@ -53,9 +52,8 @@ function insertStremioButtonIMDB() {
 }
 
 function insertStremioButtonTrakt() {
-    console.log('OIS: Run Trakt function');
-
     if (stremioButtonAdded) return;
+    console.log('OIS: Run Trakt function');
 
     const episodeMatch = window.location.href.match(/\/seasons\/(\d+)\/episodes\/(\d+)/);
     if (episodeMatch) {
@@ -111,9 +109,10 @@ function insertStremioButtonTrakt() {
 }
 
 function insertStremioButtonLetterboxd() {
-    console.log('OIS: Run letterboxd function');
+    
     if (stremioButtonAdded) return;
-
+    console.log('OIS: Run letterboxd function');
+    
     // Check if the current URL contains '/film/' (for movies)
     if (window.location.href.includes('/film/')) {
         // Get the IMDb ID from the external link on Letterboxd
