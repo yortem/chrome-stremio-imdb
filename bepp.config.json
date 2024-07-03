@@ -1,6 +1,6 @@
 {
   "shared": {
-    "id": "open_in_stremio",
+    "id": "open-in-stremio",
     "input": {
       "chromium": "./src",
       "firefox": "./src"
