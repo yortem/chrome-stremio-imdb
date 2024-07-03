@@ -1,7 +1,9 @@
+console.log('OIS: Extension loaded');
 let stremioButtonAdded = false;
 
 // Function to insert a new button before the IMDb watchlist button
 function insertStremioButtonIMDB() {
+    console.log('OIS: Run IMDB function');
 
     if (stremioButtonAdded) return;
 
@@ -51,6 +53,7 @@ function insertStremioButtonIMDB() {
 }
 
 function insertStremioButtonTrakt() {
+    console.log('OIS: Run Trakt function');
 
     if (stremioButtonAdded) return;
 
@@ -61,9 +64,11 @@ function insertStremioButtonTrakt() {
 
     // Check if the current URL contains '/shows/' (for TV shows) or '/movies/' (for movies)
     if (window.location.href.includes('/shows/') || window.location.href.includes('/movies/')) {
+        console.log('OIS: Detected page');
         // Get the IMDb ID from the external link on Trakt.tv
         const imdbLinkElement = document.getElementById('external-link-imdb');
         if (imdbLinkElement) {
+            console.log('OIS: Detected imdb');
             const imdbId = imdbLinkElement.getAttribute('href').split('/').pop(); // Extract IMDb ID from the href attribute
 
             // Create the new Stremio button
@@ -106,6 +111,7 @@ function insertStremioButtonTrakt() {
 }
 
 function insertStremioButtonLetterboxd() {
+    console.log('OIS: Run letterboxd function');
     if (stremioButtonAdded) return;
 
     // Check if the current URL contains '/film/' (for movies)
@@ -151,15 +157,25 @@ function insertStremioButtonLetterboxd() {
     }
 }
 
-if (window.location.hostname === 'www.imdb.com') {
-    insertStremioButtonIMDB();
+function runStremioButtons() {
+    console.log('OIS: Functions run');
+    if (window.location.hostname === 'www.imdb.com') {
+        insertStremioButtonIMDB();
+    }
+
+    if (window.location.hostname === 'trakt.tv') {
+        insertStremioButtonTrakt();
+    }
+
+    if (window.location.hostname === 'letterboxd.com') {
+        insertStremioButtonLetterboxd();
+    }
 }
 
-if (window.location.hostname === 'trakt.tv') {
-    insertStremioButtonTrakt();
-}
+document.addEventListener('DOMContentLoaded', runStremioButtons);
 
-if (window.location.hostname === 'letterboxd.com') {
-    insertStremioButtonLetterboxd();
-}
+// Try running the functions after the entire page has loaded
+window.addEventListener('load', runStremioButtons);
 
+// Set a fallback to run the functions after 3 seconds
+setTimeout(runStremioButtons, 1500);
