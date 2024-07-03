@@ -26,7 +26,7 @@ The plugin works on Chrome and on Firefox
 - Select the folder you just unzipped
 - See a new button on IMDB \ Trakt pages of movies and shows
 
-## How to install on Firefox
+## How to install on Firefox (Temporary addon!)
 
 - Download this repository as zip
 - Unzip the content to any folder
@@ -35,9 +35,10 @@ The plugin works on Chrome and on Firefox
 - Click on "Load Temporary Add-on"
 - Choose the file "manifest.json"
 - On the first visit to IMDB or Trakt, click on the extensions icon and then near this extension, mark it as "always allow on imdb" or trakt
+- * Since it's a temporary addon, it will mean the addon will be removed once you close your browser. that's a temporary solution until hopefuly it will be an official addon.
 
-![Screenshot](screenshot-stremio-imdb.png)
-![Screenshot 2](screenshot-stremio-trakt.png)
+![Screenshot](screenshot-stremio-imdb.webp)
+![Screenshot 2](screenshot-stremio-trakt.webp)
 ![Screenshot 3](screenshot-stremio-letterboxd.jpg)
 
 This is an unofficial chrome extension of neither IMDB \ Trakt \ Stremio
