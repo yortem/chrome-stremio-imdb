@@ -1,0 +1,31 @@
+{
+  "shared": {
+    "id": "open-in-stremio",
+    "input": {
+      "chromium": "./src",
+      "firefox": "./src"
+    },
+    "output": "build",
+    "verbose": true,
+    "time": true,
+    "exit": true,
+    "compress": "zip"
+  },
+  "build": [
+    {
+      "type": "chrome"
+    },
+    {
+      "type": "chromium"
+    },
+    {
+      "type": "edge"
+    },
+    {
+      "type": "brave"
+    },
+    {
+      "type": "firefox"
+    }
+  ]
+}

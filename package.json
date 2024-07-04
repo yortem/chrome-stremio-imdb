@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "bepp build",
+    "build:clean": "rimraf build"
+  },
+  "devDependencies": {
+    "@bepp/bepp": "^1.2.3",
+    "rimraf": "^5.0.7"
+  }
+}
