@@ -156,6 +156,53 @@ function insertStremioButtonLetterboxd() {
     }
 }
 
+function insertStremioButtonRT() {
+    if (stremioButtonAdded) return;
+    console.log('OIS: Run Rotten Tomatoes function');
+
+    // Extract the name from the URL
+    const nameMatch = window.location.pathname.match(/\/(?:tv|m)\/([^\/]+)/);
+    if (!nameMatch) {
+        console.log('OIS: No matching name in URL');
+        return;
+    }
+
+    let name = nameMatch[1];
+    name = name.replace(/_/g, '%20');
+    console.log('OIS: Detected name:', name);
+
+    // Create the new Stremio button
+    const stremioButton = document.createElement('button');
+    stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-top: -11px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Search in Stremio';
+    stremioButton.classList.add('ipc-split-button__btn');
+    stremioButton.setAttribute('role', 'button');
+    stremioButton.setAttribute('style', 'height:50px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
+    stremioButton.setAttribute('tabindex', '0');
+    stremioButton.setAttribute('aria-disabled', 'false');
+    stremioButton.style.marginRight = '10px';  // Adjust margin as needed
+
+    // Add click event listener to open Stremio link
+    stremioButton.addEventListener('click', function() {
+        let stremioLink = `stremio://search?search=${name}`;
+
+        // Open the link using a temporary anchor element
+        const tempLink = document.createElement('a');
+        tempLink.href = stremioLink;
+        tempLink.target = '_self';
+        tempLink.style.display = 'none';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+    });
+
+    const ctaWrap = document.querySelector('.media-scorecard');
+    if (ctaWrap) {
+
+        ctaWrap.insertBefore(stremioButton, ctaWrap.firstChild);
+        stremioButtonAdded = true;
+    }
+}
+
 function runStremioButtons() {
     console.log('OIS: Functions run');
     if (window.location.hostname === 'www.imdb.com') {
@@ -168,6 +215,10 @@ function runStremioButtons() {
 
     if (window.location.hostname === 'letterboxd.com') {
         insertStremioButtonLetterboxd();
+    }
+
+    if (window.location.hostname === 'www.rottentomatoes.com') {
+        insertStremioButtonRT();
     }
 }
 

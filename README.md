@@ -15,6 +15,7 @@ The plugin works on Chrome and on Firefox
 - IMDB
 - Trakt
 - letterboxd
+- Rottentemetoes (Search only)
 
 ## How to install on Chrome
 
@@ -40,6 +41,7 @@ The plugin works on Chrome and on Firefox
 ![Screenshot](screenshot-stremio-imdb.webp)
 ![Screenshot 2](screenshot-stremio-trakt.webp)
 ![Screenshot 3](screenshot-stremio-letterboxd.jpg)
+![Screenshot 4](screenshot-stremio-rt.jpg)
 
 This is an unofficial chrome extension of neither IMDB \ Trakt \ Stremio
 
