@@ -15,7 +15,7 @@ The plugin works on Chrome and on Firefox
 - IMDB
 - Trakt
 - letterboxd
-- Rottentemetoes (Search only)
+- Rottentomatoes (Search only)
 
 ## How to install on Chrome
 
