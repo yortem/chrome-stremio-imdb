@@ -15,11 +15,7 @@ The plugin works on Chrome and on Firefox
 - IMDB
 - Trakt
 - letterboxd
-<<<<<<< HEAD
 - Rotten Tomatoes (Search only)
-=======
-- Rottentomatoes (Search only)
->>>>>>> origin/main
 
 ## Installation
 
