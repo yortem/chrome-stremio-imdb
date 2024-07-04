@@ -22,8 +22,6 @@ jobs:
           zipFilePath: 'build/open-in-stremio-chrome-1.0.2.zip'
           crxFilePath: 'build/open-in-stremio-chrome-1.0.2.crx'
           privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
-          updateXmlPath: 'build/update.xml'
-          updateXmlCodebaseUrl: 'https://server.com/extension.crx'
       # publish a release if a tag has been pushed
       - name: Release
         uses: softprops/action-gh-release@v2
