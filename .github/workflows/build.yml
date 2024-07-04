@@ -16,6 +16,14 @@ jobs:
           node-version: 20
       - name: Build extension with BEPP
         uses: pigeonposse/bepp@v1.1.0
+      - name: Sign Chrome Extension crx file
+        uses: cardinalby/webext-buildtools-chrome-crx-action@2.0.3   
+        with:
+          zipFilePath: 'build/extension.zip'
+          crxFilePath: 'build/extension.crx'
+          privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+          updateXmlPath: 'build/update.xml'
+          updateXmlCodebaseUrl: 'https://server.com/extension.crx'
       # publish a release if a tag has been pushed
       - name: Release
         uses: softprops/action-gh-release@v2
