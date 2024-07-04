@@ -15,6 +15,7 @@ The plugin works on Chrome and on Firefox
 - IMDB
 - Trakt
 - letterboxd
+- Rotten Tomatoes (Search only)
 
 ## Installation
 
@@ -41,6 +42,7 @@ The plugin works on Chrome and on Firefox
 ![Screenshot](screenshot-stremio-imdb.webp)
 ![Screenshot 2](screenshot-stremio-trakt.webp)
 ![Screenshot 3](screenshot-stremio-letterboxd.jpg)
+![Screenshot 4](screenshot-stremio-rt.jpg)
 
 ## Development
 
