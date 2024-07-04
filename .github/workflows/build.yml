@@ -19,8 +19,8 @@ jobs:
       - name: Sign Chrome Extension crx file
         uses: cardinalby/webext-buildtools-chrome-crx-action@2.0.3   
         with:
-          zipFilePath: 'build/extension.zip'
-          crxFilePath: 'build/extension.crx'
+          zipFilePath: 'build/open-in-stremio-chrome-1.0.2.zip'
+          crxFilePath: 'build/open-in-stremio-chrome-1.0.2.crx'
           privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
           updateXmlPath: 'build/update.xml'
           updateXmlCodebaseUrl: 'https://server.com/extension.crx'
