@@ -85,8 +85,9 @@ function handleResult(err, result) {
         console.error('Error:', err);
     } else {
         if (result) {
+            console.log(result);
             const button = document.querySelector(`a[data-movie-name="${result['name']}"]`);
-            button.href = `stremio:///detail/movie/${result['id']}`;
+            button.href = `stremio:///detail/${result['type']}/${result['id']}`;
             
             var Const = result['id'];
             var Title = result['name'];
@@ -98,6 +99,17 @@ function handleResult(err, result) {
             console.log('Movie not found');
         }
     }
+}
+
+function containsTextInElement(selector, text) {
+    const element = document.querySelector(selector);
+    return element ? element.innerText.includes(text) : false;
+}
+
+if (containsTextInElement("h1", "TV shows")) {
+    const thetype = 'series';
+} else {
+    const thetype = 'movies';
 }
 
 function insertStremioButtonBestSmilar() {
@@ -147,9 +159,15 @@ function insertStremioButtonBestSmilar() {
     
         divi.appendChild(stremioButton);
 
+        if (containsTextInElement("h1", "TV shows")) {
+            var thetype = 'series';
+        } else {
+            var thetype = 'movie';
+        }
+
         var moviequery = {
             name: movie.name,
-            type: "movie",
+            type: thetype,
             year: movie.year
         };
 
@@ -158,7 +176,7 @@ function insertStremioButtonBestSmilar() {
 
 
     const downloadButton = document.createElement('button');
-    downloadButton.innerText = 'Download these movies as CSV';
+    downloadButton.innerText = 'Download this list as CSV';
     downloadButton.setAttribute('id','download-as-csv');
 
     var csvdownload = document.getElementById('download-as-csv');
@@ -169,7 +187,7 @@ function insertStremioButtonBestSmilar() {
         const textButton = document.createElement('div');
         textButton.setAttribute('style','float: left;width: calc(100% - 300px);padding: 10px; background-color: white; margin: 10px; border: 2px solid #5c58ee; border-radius: 5px;margin-top: 0px;');
 
-        textButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 20px;height: 20px;margin-right: 15px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> <span>You can then upload them to <a target="_blank" href="https://www.journey.co.il/stremio/">journey.co.il/stremio/</a> in order to create a catalog based on this list</span>';
+        textButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 20px;height: 20px;margin-right: 15px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> <span>You can then upload it to <a target="_blank" href="https://www.journey.co.il/stremio/">journey.co.il/stremio/</a> in order to create a catalog based on this list</span>';
 
         document.querySelector(`.heading-c`).appendChild(downloadButton);
         document.querySelector(`.heading-c`).appendChild(textButton);
