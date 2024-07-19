@@ -16,6 +16,7 @@ The plugin works on Chrome and on Firefox
 - Trakt
 - letterboxd
 - Rotten Tomatoes (Search only)
+- Bestsimilar (+ option to download movies as a CSV list)
 
 ## Installation
 
@@ -43,6 +44,7 @@ The plugin works on Chrome and on Firefox
 ![Screenshot 2](screenshot-stremio-trakt.webp)
 ![Screenshot 3](screenshot-stremio-letterboxd.jpg)
 ![Screenshot 4](screenshot-stremio-rt.jpg)
+![Screenshot 5](screenshot-stremio-bestsimilar.jpg)
 
 ## Development
 

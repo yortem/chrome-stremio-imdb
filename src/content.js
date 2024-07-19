@@ -220,6 +220,10 @@ function runStremioButtons() {
     if (window.location.hostname === 'www.rottentomatoes.com') {
         insertStremioButtonRT();
     }
+
+    if (window.location.hostname === 'bestsimilar.com') {
+        insertStremioButtonBestSmilar();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', runStremioButtons);
