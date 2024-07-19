@@ -85,15 +85,20 @@ function handleResult(err, result) {
         console.error('Error:', err);
     } else {
         if (result) {
-            console.log(result);
             const button = document.querySelector(`a[data-movie-name="${result['name']}"]`);
-            button.href = `stremio:///detail/${result['type']}/${result['id']}`;
+            if (button) {
+                button.href = `stremio:///detail/${result['type']}/${result['id']}`;
+            }
             
             var Const = result['id'];
             var Title = result['name'];
             var Year = result['year'];
 
             moviesforCSV.push({ Const, Title, Year });
+
+            var counter = document.querySelector(`.count-stremio`);
+            counter.innerText = moviesforCSV.length;
+
             return result;
         } else {
             console.log('Movie not found');
@@ -176,7 +181,7 @@ function insertStremioButtonBestSmilar() {
 
 
     const downloadButton = document.createElement('button');
-    downloadButton.innerText = 'Download this list as CSV';
+    downloadButton.innerHTML = 'Download this list as CSV (<span class="count-stremio">0</span> titles)';
     downloadButton.setAttribute('id','download-as-csv');
 
     var csvdownload = document.getElementById('download-as-csv');
@@ -189,10 +194,13 @@ function insertStremioButtonBestSmilar() {
 
         textButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 20px;height: 20px;margin-right: 15px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> <span>You can then upload it to <a target="_blank" href="https://www.journey.co.il/stremio/">journey.co.il/stremio/</a> in order to create a catalog based on this list</span>';
 
-        document.querySelector(`.heading-c`).appendChild(downloadButton);
-        document.querySelector(`.heading-c`).appendChild(textButton);
-
-        document.querySelector('.heading-c').setAttribute('style','margin-bottom: 60px;');
+        const headingExists = document.querySelector('.heading-c');
+        if (headingExists) {
+            
+            document.querySelector(`.heading-c`).appendChild(downloadButton);
+            document.querySelector(`.heading-c`).appendChild(textButton);
+            document.querySelector('.heading-c').setAttribute('style','margin-bottom: 60px;');
+        }
     } else {
         return false;
     }

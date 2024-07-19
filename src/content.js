@@ -222,7 +222,15 @@ function runStremioButtons() {
     }
 
     if (window.location.hostname === 'bestsimilar.com') {
-        insertStremioButtonBestSmilar();
+        var runnedBestsimilar = false;
+        const button = document.querySelector('#buttonMoreMovieRelListContainer button');
+        if (button) {
+            button.click();
+            if (!runnedBestsimilar) {
+                runnedBestsimilar = true;
+                setTimeout(insertStremioButtonBestSmilar, 1000);
+            }
+        }
     }
 }
 
