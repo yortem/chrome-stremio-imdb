@@ -90,14 +90,16 @@ function handleResult(err, result) {
                 button.href = `stremio:///detail/${result['type']}/${result['id']}`;
             }
             
-            var Const = result['id'];
-            var Title = result['name'];
-            var Year = result['year'];
-
-            moviesforCSV.push({ Const, Title, Year });
-
             var counter = document.querySelector(`.count-stremio`);
-            counter.innerText = moviesforCSV.length;
+
+            if (counter !== null) {
+                var Const = result['id'];
+                var Title = result['name'];
+                var Year = result['year'];
+    
+                moviesforCSV.push({ Const, Title, Year });
+                counter.innerText = moviesforCSV.length;
+            }
 
             return result;
         } else {

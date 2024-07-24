@@ -203,6 +203,55 @@ function insertStremioButtonRT() {
     }
 }
 
+function insertStremioButtonTMDB() {
+    if (stremioButtonAdded) return;
+    console.log('OIS: Run TMDB function');
+
+    // Check if the current URL contains '/tv/' (for TV shows) or '/movies/' (for movies)
+    if (window.location.href.includes('/movie/') || window.location.href.includes('/tv/')) {
+        console.log('OIS: Detected page');
+
+        // Get the name of the movie or TV show
+        const nameElement = document.querySelector('h2 > a');
+        const yearElement = document.querySelector('span.tag.release_date');
+        
+        if (!nameElement || !yearElement) {
+            console.error('OIS: Name or year element not found');
+            return;
+        }
+
+        const name = nameElement.textContent.trim();
+        const year = yearElement.textContent.trim().match(/\d{4}/)[0];
+
+        const thetype = window.location.href.includes('/movie/') ? 'movie' : 'series';
+        
+        var moviequery = {
+            name: name,
+            type: thetype,
+            year: year
+        };
+
+        const stremioButton = document.createElement('a');
+        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 46px; height: 46px;" src="https://www.stremio.com/website/stremio-logo-small.png"/>';
+        stremioButton.setAttribute('class', 'stremio-button');
+        stremioButton.setAttribute('style', 'margin-left: 10px;');
+        stremioButton.setAttribute('data-movie-name', name);
+        stremioButton.setAttribute('data-movie-year', year);
+        stremioButton.setAttribute('data-movie-type', thetype);
+
+        const actionsElement = document.querySelector('ul.auto.actions');
+        if (actionsElement) {
+            actionsElement.appendChild(stremioButton);
+            stremioButtonAdded = true;
+        } else {
+            console.error('OIS: Actions element not found');
+        }
+
+        metadataFind(moviequery, handleResult);
+
+    }
+}
+
 function runStremioButtons() {
     console.log('OIS: Functions run');
     if (window.location.hostname === 'www.imdb.com') {
@@ -219,6 +268,10 @@ function runStremioButtons() {
 
     if (window.location.hostname === 'www.rottentomatoes.com') {
         insertStremioButtonRT();
+    }
+
+    if (window.location.hostname === 'www.themoviedb.org') {
+        insertStremioButtonTMDB();
     }
 
     if (window.location.hostname === 'bestsimilar.com') {
