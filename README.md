@@ -17,6 +17,7 @@ The plugin works on Chrome and on Firefox
 - letterboxd
 - Rotten Tomatoes (Search only)
 - Bestsimilar (+ option to download movies as a CSV list)
+- TMDB
 
 ## Installation
 
@@ -45,6 +46,7 @@ The plugin works on Chrome and on Firefox
 ![Screenshot 3](screenshot-stremio-letterboxd.jpg)
 ![Screenshot 4](screenshot-stremio-rt.jpg)
 ![Screenshot 5](screenshot-stremio-bestsimilar.jpg)
+![Screenshot 6](themoviedb-stremio.jpg)
 
 ## Development
 
