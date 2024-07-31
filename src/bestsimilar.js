@@ -73,6 +73,7 @@ function metadataFind(query, cb) {
             yearRange: undefined,
             image: undefined,
             starring: undefined,
+            score: query.score,
             similarity: undefined,
         } : false;
         return cb(null, res);
@@ -85,6 +86,7 @@ function handleResult(err, result) {
         console.error('Error:', err);
     } else {
         if (result) {
+            console.log(result);
             const button = document.querySelector(`a[data-movie-name="${result['name']}"]`);
             if (button) {
                 button.href = `stremio:///detail/${result['type']}/${result['id']}`;
@@ -96,8 +98,9 @@ function handleResult(err, result) {
                 var Const = result['id'];
                 var Title = result['name'];
                 var Year = result['year'];
+                var Rating = result['score'];
     
-                moviesforCSV.push({ Const, Title, Year });
+                moviesforCSV.push({ Const, Title, Year, Rating });
                 counter.innerText = moviesforCSV.length;
             }
 
@@ -126,6 +129,9 @@ function insertStremioButtonBestSmilar() {
     items.forEach((item) => {
         const nameElement = item.querySelector(".name-c .name");
         const idElement = item.querySelector(".fav_btn_img button");
+        
+        const ratingspans = item.querySelectorAll(".rat-rating span");
+        const imdbrating = ratingspans[1].textContent.trim();
 
         if (nameElement && idElement) {
             const nameYear = nameElement.textContent.trim();
@@ -137,12 +143,12 @@ function insertStremioButtonBestSmilar() {
                 const name = match[1];
                 const year = match[2];
 
-                movies.push({ id, name, year });
+                movies.push({ id, name, year, imdbrating });
             }
         }
     });
 
-    console.log(movies); // For debugging, to see the extracted array
+    // console.log(movies); // For debugging, to see the extracted array
 
     // Example of inserting a button for each movie
     movies.forEach((movie) => {
@@ -175,7 +181,8 @@ function insertStremioButtonBestSmilar() {
         var moviequery = {
             name: movie.name,
             type: thetype,
-            year: movie.year
+            year: movie.year,
+            score: movie.imdbrating
         };
 
         metadataFind(moviequery, handleResult);
@@ -227,13 +234,15 @@ function downloadCSV() {
         return;
     }
 
+    var h1Content = document.querySelector('h1').textContent;
+
     const csvData = convertArrayToCSV(moviesforCSV);
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.setAttribute('hidden', '');
     a.setAttribute('href', url);
-    a.setAttribute('download', 'movies.csv');
+    a.setAttribute('download', h1Content + '.csv');
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
