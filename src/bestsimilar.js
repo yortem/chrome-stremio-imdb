@@ -86,6 +86,7 @@ function handleResult(err, result) {
         console.error('Error:', err);
     } else {
         if (result) {
+            console.log(result);
             const button = document.querySelector(`a[data-movie-name="${result['name']}"]`);
             if (button) {
                 button.href = `stremio:///detail/${result['type']}/${result['id']}`;
@@ -105,10 +106,10 @@ function handleResult(err, result) {
 
             return result;
         } else {
-
             console.log('Movie not found');
         }
     }
+
 }
 
 function containsTextInElement(selector, text) {
@@ -116,10 +117,10 @@ function containsTextInElement(selector, text) {
     return element ? element.innerText.includes(text) : false;
 }
 
-if (containsTextInElement("h1", "TV shows")) {
-    const thetype = 'series';
-} else {
+if (containsTextInElement("h1", "movies")) {
     const thetype = 'movies';
+} else {
+    const thetype = 'series';
 }
 
 function insertStremioButtonBestSmilar() {
@@ -172,10 +173,10 @@ function insertStremioButtonBestSmilar() {
     
         divi.appendChild(stremioButton);
 
-        if (containsTextInElement("h1", "TV shows")) {
-            var thetype = 'series';
-        } else {
+        if (containsTextInElement("h1", "ovies")) {
             var thetype = 'movie';
+        } else {
+            var thetype = 'series';
         }
 
         var moviequery = {
@@ -187,8 +188,7 @@ function insertStremioButtonBestSmilar() {
 
         metadataFind(moviequery, handleResult);
     });
-
-
+    
     const downloadButton = document.createElement('button');
     downloadButton.innerHTML = 'Download this list as CSV (<span class="count-stremio">0</span> titles)';
     downloadButton.setAttribute('id','download-as-csv');
