@@ -2,7 +2,7 @@
   "name": "IMDB / Trakt Open in Stremio",
   "description": "Allow you to open movies you see on IMDB or Trakt straight to your Stremio",
   "homepage_url": "https://www.journey.co.il/stremio/",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "manifest_version": 3,
   "icons": {
     "16": "favicon.png",
@@ -23,7 +23,9 @@
         "https://www.rottentomatoes.com/m/*",
         "https://bestsimilar.com/*",
         "https://www.themoviedb.org/movie/*",
-        "https://www.themoviedb.org/tv/*"
+        "https://www.themoviedb.org/tv/*",
+        "https://www.reddit.com/r/MovieSuggestions/*",
+        "https://www.reddit.com/r/televisionsuggestions/*"
       ]
     }
   ],
@@ -37,6 +39,7 @@
     "https://letterboxd.com/*",
     "https://www.rottentomatoes.com/*",
     "https://bestsimilar.com/*",
-    "https://www.themoviedb.org/*"
+    "https://www.themoviedb.org/*",
+    "https://www.reddit.com/*"
   ]
 }

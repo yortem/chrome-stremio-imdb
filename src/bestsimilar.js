@@ -1,7 +1,7 @@
 
 
-const movies = [];
-const moviesforCSV = [];
+let movies = [];
+let moviesforCSV = [];
 
 // Use cinemeta to pull names of movies and series against IMDB IDs
 var cinemetaUrls = {
@@ -86,7 +86,6 @@ function handleResult(err, result) {
         console.error('Error:', err);
     } else {
         if (result) {
-            console.log(result);
             const button = document.querySelector(`a[data-movie-name="${result['name']}"]`);
             if (button) {
                 button.href = `stremio:///detail/${result['type']}/${result['id']}`;
@@ -106,6 +105,7 @@ function handleResult(err, result) {
 
             return result;
         } else {
+
             console.log('Movie not found');
         }
     }
@@ -230,6 +230,7 @@ function convertArrayToCSV(array) {
 }
 
 function downloadCSV() {
+
     if (moviesforCSV.length === 0) {
         return;
     }

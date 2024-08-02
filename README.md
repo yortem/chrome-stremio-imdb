@@ -2,11 +2,12 @@
 
 ## Purpose
 
-Help you open Stremio movies or shows directly from IMDB or Trakt.
+Help you open Stremio movies or shows directly from IMDB, Trakt and other sites.
 
 ## What it does
 
-Add a button to the IMDB\Trakt page of movies and TV shows, next to the Wishlist button. The button opens the movie page on Stremio.
+Add a Stremio button to various sites. The button opens the movie\series page on Stremio.
+On some sites, there's an export button that export list to be used on [journey.co.il/stremio/](https://www.journey.co.il/stremio) in order to create a catalog.
 
 The plugin works on Chrome and on Firefox
 
@@ -18,6 +19,7 @@ The plugin works on Chrome and on Firefox
 - Rotten Tomatoes (Search only)
 - Bestsimilar (+ option to download movies as a CSV list)
 - TMDB
+- Reddit (r/MovieSuggestions and r/televisionsuggestions) creating lists only
 
 ## Installation
 

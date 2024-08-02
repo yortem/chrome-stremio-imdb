@@ -252,6 +252,117 @@ function insertStremioButtonTMDB() {
     }
 }
 
+function insertStremioButtonReddit() {
+    if (stremioButtonAdded) return;
+
+    // const dropdown = document.querySelector('shreddit-comments-sort-dropdown.flex.justify-between.flex-wrap.mt-sm');
+    const dropdown = document.querySelector('h1');
+
+    if (dropdown) {
+        // Create the Stremio button
+        const stremioButton = document.createElement('button');
+        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span><span id="stremio-text">Create list</span> (<span class="count-stremio">0</span>)</span>';
+        stremioButton.style.marginLeft = '10px'; // Adjust margin as needed
+        stremioButton.style.cursor = 'pointer'; // Pointer cursor for better UX
+        stremioButton.style.padding = '0px 15px 0px 0px';
+        stremioButton.id = 'stremio-button';
+
+        // Attach the click event to the button
+        stremioButton.addEventListener('click', RedditLoadList);
+
+        // Append the button to the dropdown element
+        dropdown.appendChild(stremioButton);
+        stremioButtonAdded = true;
+    } else {
+        console.error('Element "shreddit-comments-sort-dropdown" not found.');
+    }
+
+}
+
+function RedditLoadList() {
+    console.log('OIS: Run Reddit Button');
+
+    // Check if the current URL contains '/tv/' (for TV shows) or '/movies/' (for movies)
+    if (window.location.href.includes('/MovieSuggestions/') || window.location.href.includes('/televisionsuggestions/')) {
+        console.log('OIS: Detected page');
+
+        const thetype = window.location.href.includes('/MovieSuggestions/') ? 'movie' : 'series';
+        
+        // Get the element with ID "comment-tree"
+        const commentTree = document.getElementById("comment-tree");
+
+        // Initialize an array to hold the lists of movies
+        const movieLists = [];
+
+        // Get all <p> elements within the "comment-tree" element
+        const paragraphs = commentTree.querySelectorAll("p");
+
+        // Loop through each <p> element
+        paragraphs.forEach(p => {
+            
+            // Use a regular expression to match and extract the movie name and year
+            const textContent = p.textContent.trim();
+
+            const words = textContent.split(/\s+/);
+
+            // Skip paragraphs with more than 8 words
+            if (words.length > 8) {
+                return;
+            }
+
+            // Use a regular expression to match and extract the movie name and year
+            const match = textContent.match(/^(.*)\s\((\d{4})\)$/);
+
+            let moviequery;
+        
+            if (match) {
+                // Extract the movie name and year from the match groups
+                let name = match[1].trim();
+                // Remove the period at the end if it exists
+                if (name.endsWith('.')) {
+                    name = name.slice(0, -1);
+                }
+                const year = match[2];
+        
+                // Create the movie query object with the year
+                moviequery = {
+                    name: name,
+                    type: thetype, // Set the type appropriately
+                    year: year,
+                    score: ''
+                };
+            } else {
+                // No year found, create the movie query object with null year
+                let name = p.textContent.trim();
+                // Remove the period at the end if it exists
+                if (name.endsWith('.')) {
+                    name = name.slice(0, -1);
+                }
+
+                moviequery = {
+                    name: name,
+                    type: thetype,
+                    score: ''
+                };
+            }
+
+            metadataFind(moviequery, handleResult);
+        
+            // Add the movie query object to the movieLists array
+            movieLists.push(moviequery);
+        });
+
+    }
+
+    var textbutton = document.getElementById("stremio-text");
+    textbutton.innerHTML = 'Download List';
+
+    var stremioButton = document.getElementById("stremio-button");
+    stremioButton.removeEventListener('click', RedditLoadList);
+    stremioButton.addEventListener('click', downloadCSV);
+
+}
+
 function runStremioButtons() {
     console.log('OIS: Functions run');
     if (window.location.hostname === 'www.imdb.com') {
@@ -285,6 +396,18 @@ function runStremioButtons() {
             }
         }
     }
+
+    if (window.location.hostname === 'www.reddit.com') {
+        setTimeout(insertStremioButtonReddit, 1500);
+        window.addEventListener('popstate', handleNavigateEventReddit);
+    }
+}
+
+function handleNavigateEventReddit(event) {
+    stremioButtonAdded = false;
+    movies.length = 0;
+    moviesforCSV.length = 0;
+    setTimeout(insertStremioButtonReddit, 1500);
 }
 
 document.addEventListener('DOMContentLoaded', runStremioButtons);
