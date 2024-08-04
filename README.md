@@ -20,6 +20,7 @@ The plugin works on Chrome and on Firefox
 - Bestsimilar (+ option to download movies as a CSV list)
 - TMDB
 - Reddit (r/MovieSuggestions and r/televisionsuggestions) creating lists only
+- douban
 
 ## Installation
 

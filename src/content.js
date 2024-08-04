@@ -291,6 +291,10 @@ function RedditLoadList() {
         // Get the element with ID "comment-tree"
         const commentTree = document.getElementById("comment-tree");
 
+        if (commentTree == null) {
+            return false;
+        }
+
         // Initialize an array to hold the lists of movies
         const movieLists = [];
 
@@ -363,6 +367,60 @@ function RedditLoadList() {
 
 }
 
+function insertStremioButtonDouban() {
+    if (stremioButtonAdded) return;
+    console.log('Running insertStremioButtonDouban');
+
+    // Find all span elements with class 'pl'
+    const spanElements = document.querySelectorAll('span.pl');
+    let imdbElement = null;
+
+    // Find the span element that contains the text "IMDb:"
+    spanElements.forEach(span => {
+        if (span.textContent.trim() === 'IMDb:') {
+            imdbElement = span;
+        }
+    });
+
+    if (!imdbElement) {
+        console.log('IMDb code not found');
+        return;
+    }
+
+    // Extract the IMDb code
+    const imdbText = imdbElement.nextSibling.textContent.trim();
+    const imdbMatch = imdbText.match(/tt\d+/);
+    if (!imdbMatch) {
+        console.log('IMDb code not found in the text');
+        return;
+    }
+
+    const imdbCode = imdbMatch[0];
+    console.log('Found IMDb code:', imdbCode);
+
+    // Determine if it's a movie or a TV show
+    const infoElement = document.getElementById('info');
+    const type = infoElement && infoElement.textContent.includes('集数') ? 'series' : 'movie';
+    console.log('Type:', type);
+
+    // Create the Stremio button
+    const stremioButton = document.createElement('a');
+    stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 30px; height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> Open in Stremio';
+    stremioButton.classList.add('stremio-button');
+    stremioButton.href = `stremio:///detail/${type}/${imdbCode}`;
+    stremioButton.style.marginTop = '10px';
+    stremioButton.style.fontWeight = 'bold';
+    stremioButton.style.fontSize = '16px';
+    stremioButton.style.color = '#5c58ee';
+    stremioButton.style.textDecoration = 'none';
+    stremioButton.style.background = 'white';
+    stremioButton.style.display = 'block';
+
+    // Insert the button next to the IMDb element
+    infoElement.append(stremioButton);
+    stremioButtonAdded = true;
+}
+
 function runStremioButtons() {
     console.log('OIS: Functions run');
     if (window.location.hostname === 'www.imdb.com') {
@@ -401,6 +459,10 @@ function runStremioButtons() {
     if (window.location.hostname === 'www.reddit.com') {
         setTimeout(insertStremioButtonReddit, 1500);
         window.addEventListener('popstate', handleNavigateEventReddit);
+    }
+
+    if (window.location.hostname === 'movie.douban.com') {
+        insertStremioButtonDouban();
     }
 }
 
