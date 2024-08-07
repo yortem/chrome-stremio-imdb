@@ -13,7 +13,7 @@ The plugin works on Chrome and on Firefox
 
 ## Which sites are supported?
 
-- IMDB
+- IMDB (+ option to download advanced search results as a CSV list)
 - Trakt
 - letterboxd
 - Rotten Tomatoes (Search only)

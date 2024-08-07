@@ -421,10 +421,93 @@ function insertStremioButtonDouban() {
     stremioButtonAdded = true;
 }
 
+function IMDBLoadList() {
+    console.log('OIS: Run IMDB LIST Button');
+
+    // Check if the current URL contains 'title_type=tv_series' to determine the type
+    const urlParams = new URLSearchParams(window.location.search);
+    const thetype = urlParams.get('title_type') === 'tv_series' ? 'series' : 'movie';
+    
+    console.log('OIS: Detected type:', thetype);
+
+    // Get all elements with the class "ipc-metadata-list-summary-item"
+    const listItems = document.querySelectorAll(".ipc-metadata-list-summary-item");
+
+    // Loop through each list item element
+    listItems.forEach(item => {
+        // Get the element with the class "ipc-title__text" for the movie/TV show name
+        const titleElement = item.querySelector(".ipc-title__text");
+        if (!titleElement) return; // Skip if title element not found
+
+        // Extract the name and remove the number and dot at the beginning
+        let name = titleElement.textContent.trim();
+        name = name.replace(/^\d+\.\s*/, ''); // Remove leading number and dot
+
+        // Get the rating with the class "ipc-rating-star--rating"
+        const ratingElement = item.querySelector(".ipc-rating-star--rating");
+        const rating = ratingElement ? ratingElement.textContent.trim() : '';
+
+        // Get the year from the first span inside the element with the class "dli-title-metadata"
+        const yearElement = item.querySelector(".dli-title-metadata > span");
+        const year = yearElement ? yearElement.textContent.trim() : null;
+
+        // Get the IMDb ID from the link inside the class "ipc-title-link-wrapper"
+        const linkElement = item.querySelector(".ipc-title-link-wrapper");
+        const imdbId = linkElement ? linkElement.href.match(/tt\d+/)[0] : null;
+
+        // Create the movie/TV show query object
+        const moviequery = {
+            Const: imdbId,
+            Title: name,
+            Year: year,
+            Rating: rating,
+        };
+
+        // Add the movie query object to the movieLists array
+        moviesforCSV.push(moviequery);
+    });
+
+    var counter = document.querySelector(`.count-stremio`);
+    counter.innerText = moviesforCSV.length;
+
+    downloadCSV();
+
+    moviesforCSV = [];
+}
+
+function IMDBLoadListButton() {
+    if (stremioButtonAdded) return;
+    console.log('OIS: Adding Download List Button');
+    
+    const dropdown = document.querySelector('h1');
+    const stremioButton = document.createElement('a');
+    stremioButton.innerHTML = '<img title="Download" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span><span id="stremio-text">Download search results</span> (<span class="count-stremio">0</span>)</span>';
+    stremioButton.style.cursor = 'pointer'; // Pointer cursor for better UX
+    stremioButton.style.padding = '0px 15px 0px 0px';
+    stremioButton.style.border = '2px solid #5c58ee';
+    stremioButton.id = 'stremio-button';
+    stremioButton.style.padding = '7px';
+    stremioButton.style.borderRadius = '20px';
+
+    // Attach the click event to the button
+    stremioButton.addEventListener('click', IMDBLoadList);
+
+    // Get the .ipc-page-background element and prepend the button to it
+    const pageBackground = document.querySelector('.ibVdnl');
+    if (pageBackground) {
+        pageBackground.append(stremioButton);
+        stremioButtonAdded = true;
+    } else {
+        console.error('OIS: .jfNgiQ element not found');
+    }
+
+}
+
 function runStremioButtons() {
     console.log('OIS: Functions run');
     if (window.location.hostname === 'www.imdb.com') {
         insertStremioButtonIMDB();
+        IMDBLoadListButton();
     }
 
     if (window.location.hostname === 'trakt.tv') {
