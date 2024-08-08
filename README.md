@@ -22,6 +22,16 @@ The plugin works on Chrome and on Firefox
 - Reddit (r/MovieSuggestions and r/televisionsuggestions) creating lists only
 - douban
 
+### Right-click context menu
+
+As for version 1.2.0, the extension adds a right-click menu: "Search in Stremio" when selecting text on any website. if you see a name of a movie in a website:
+
+- Select the text \ name of the movie
+-  right-click
+-  "Search in Stremio"
+
+It will search for the movie in your Stremio.
+
 ## Installation
 
 [Download the extension](https://github.com/yortem/chrome-stremio-imdb/releases/) for your favorite browser. Unzip the contents and then follow the instructions below.
