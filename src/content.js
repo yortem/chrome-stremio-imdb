@@ -563,3 +563,28 @@ window.addEventListener('load', runStremioButtons);
 
 // Set a fallback to run the functions after 3 seconds
 setTimeout(runStremioButtons, 1500);
+
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.contextMenus.create({
+      id: "searchMovie",
+      title: "Search Movie: '%s'",
+      contexts: ["selection"]
+    });
+  });
+  
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === "searchMovie") {
+      const selectedText = info.selectionText;
+      if (selectedText) {
+        searchMovie(selectedText);
+      }
+    }
+  });
+  
+  function searchMovie(movieName) {
+    console.log('Searching movie:', movieName);
+    // Here you can perform any action you want, like opening a new tab with a search query:
+    chrome.tabs.create({
+      url: `https://www.imdb.com/find?q=${encodeURIComponent(movieName)}`
+    });
+  }

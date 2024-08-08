@@ -2,13 +2,16 @@
   "name": "IMDB / Trakt Open in Stremio",
   "description": "Allow you to open movies you see on IMDB or Trakt straight to your Stremio",
   "homepage_url": "https://www.journey.co.il/stremio/",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "manifest_version": 3,
   "icons": {
     "16": "favicon.png",
     "32": "favicon.png",
     "48": "favicon.png",
     "128": "favicon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -33,7 +36,8 @@
   ],
   "permissions": [
     "tabs",
-    "scripting"
+    "scripting",
+    "contextMenus"
   ],
   "host_permissions": [
     "https://www.imdb.com/*",
