@@ -24,7 +24,7 @@ The plugin works on Chrome and on Firefox
 
 ### Right-click context menu
 
-As for version 1.2.0, the extension adds a right-click menu: "Search in Stremio" when selecting text on any website. if you see a name of a movie in a website:
+As of version 1.2.0, the extension adds a right-click menu: "Search in Stremio" when selecting text on any website. if you see a name of a movie in a website:
 
 - Select the text \ name of the movie
 -  right-click
