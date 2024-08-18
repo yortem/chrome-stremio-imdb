@@ -9,6 +9,31 @@ var cinemetaUrls = {
     'series': 'https://cinemeta.strem.io/stremioget/stremio/v1/q.json?b=eyJwYXJhbXMiOltudWxsLHt9XSwibWV0aG9kIjoibmFtZXMuc2VyaWVzIiwiaWQiOjEsImpzb25ycGMiOiIyLjAifQ==',
 }
 
+function getIdFromUrlTMDB(url) {
+    try {
+        // Create a new URL object
+        const parsedUrl = new URL(url);
+
+        // Get the pathname from the URL (e.g., "/movie/956842-fly-me-to-the-moon")
+        const path = parsedUrl.pathname;
+
+        // Split the path into segments
+        const segments = path.split('/');
+
+        // The ID should be the second segment if the URL follows the pattern
+        // Example: [ "", "movie", "956842-fly-me-to-the-moon" ]
+        const idSegment = segments[2];
+        
+        // Extract the ID from the segment (before the hyphen)
+        const id = idSegment.split('-')[0];
+
+        return id;
+    } catch (error) {
+        console.error('Error parsing URL:', error);
+        return null;
+    }
+}
+
 // Simplify name (replace this function as needed)
 function simplifyName(entry) {
     return entry.name.toLowerCase().replace(/[\W_]+/g, '');
@@ -107,6 +132,19 @@ function handleResult(err, result) {
             return result;
         } else {
             console.log('Movie not found');
+            
+            // alternative for TMDB
+            if (window.location.hostname === 'www.themoviedb.org') {
+                const thetype = window.location.href.includes('/movie/') ? 'movie' : 'series';
+                const nameElement = document.querySelector('h2 > a');
+                const name = nameElement.textContent.trim();
+                console.log('IOS: Searching for Alternative');
+                const tmdbid = getIdFromUrlTMDB(window.location.href);
+                const button = document.querySelector(`a[data-movie-name="${name}"]`);
+                if (button) {
+                    button.href = `stremio:///detail/${thetype}/tmdb:${tmdbid}`;
+                }
+            }
         }
     }
 
