@@ -283,10 +283,10 @@ function RedditLoadList() {
     console.log('OIS: Run Reddit Button');
 
     // Check if the current URL contains '/tv/' (for TV shows) or '/movies/' (for movies)
-    if (window.location.href.includes('/MovieSuggestions/') || window.location.href.includes('/televisionsuggestions/')) {
+    if (window.location.href.includes('/MovieSuggestions/') || window.location.href.includes('/televisionsuggestions/') || window.location.href.includes('/Letterboxd/')) {
         console.log('OIS: Detected page');
 
-        const thetype = window.location.href.includes('/MovieSuggestions/') ? 'movie' : 'series';
+        const thetype = window.location.href.includes('/televisionsuggestions/') ? 'series' : 'movie';
         
         // Get the element with ID "comment-tree"
         const commentTree = document.getElementById("comment-tree");
@@ -498,7 +498,7 @@ function IMDBLoadListButton() {
         pageBackground.append(stremioButton);
         stremioButtonAdded = true;
     } else {
-        console.error('OIS: .jfNgiQ element not found');
+        console.log('OIS: .jfNgiQ element not found');
     }
 
 }

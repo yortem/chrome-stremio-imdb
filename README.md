@@ -19,7 +19,7 @@ The plugin works on Chrome and on Firefox
 - Rotten Tomatoes (Search only)
 - Bestsimilar (+ option to download movies as a CSV list)
 - TMDB
-- Reddit (r/MovieSuggestions and r/televisionsuggestions) creating lists only
+- Reddit (r/MovieSuggestions,r/televisionsuggestions,r/Letterboxd) creating lists only
 - douban
 
 ### Right-click context menu
