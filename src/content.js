@@ -493,7 +493,7 @@ function IMDBLoadListButton() {
     stremioButton.addEventListener('click', IMDBLoadList);
 
     // Get the .ipc-page-background element and prepend the button to it
-    const pageBackground = document.querySelector('.ibVdnl');
+    const pageBackground = document.querySelector('.lkFtOq');
     if (pageBackground) {
         pageBackground.append(stremioButton);
         stremioButtonAdded = true;
