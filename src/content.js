@@ -457,10 +457,24 @@ function IMDBLoadList() {
 
         // Create the movie/TV show query object
         const moviequery = {
+            Position: '',
             Const: imdbId,
+            Created: '',
+            Modified: '',
+            Description: '',
             Title: name,
+            'Original Title': '',
+            URL: '',
+            'Title Type': '',
+            'IMDb Rating': rating,
+            'Runtime (mins)': '',
             Year: year,
-            Rating: rating,
+            Genres: '',
+            'Num Votes': '',
+            'Release Date': '',
+            Directors: '',
+            'Your Rating': '',
+            'Date Rated': ''
         };
 
         // Add the movie query object to the movieLists array
