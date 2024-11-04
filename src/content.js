@@ -426,7 +426,7 @@ function IMDBLoadList() {
 
     // Check if the current URL contains 'title_type=tv_series' to determine the type
     const urlParams = new URLSearchParams(window.location.search);
-    const thetype = urlParams.get('title_type') === 'tv_series' ? 'series' : 'movie';
+    const thetype = urlParams.get('title_type') === 'tv_series' ? 'TV Series' : 'Movie';
     
     console.log('OIS: Detected type:', thetype);
 
@@ -465,7 +465,7 @@ function IMDBLoadList() {
             Title: name,
             'Original Title': '',
             URL: '',
-            'Title Type': '',
+            'Title Type': thetype,
             'IMDb Rating': rating,
             'Runtime (mins)': '',
             Year: year,
