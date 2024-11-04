@@ -455,6 +455,9 @@ function IMDBLoadList() {
         const linkElement = item.querySelector(".ipc-title-link-wrapper");
         const imdbId = linkElement ? linkElement.href.match(/tt\d+/)[0] : null;
 
+        const specificTypeElement = item.querySelector(".dli-title-type-data");
+        const specificType = specificTypeElement ? specificTypeElement.textContent.trim() : thetype;
+
         // Create the movie/TV show query object
         const moviequery = {
             Position: '',
@@ -465,7 +468,7 @@ function IMDBLoadList() {
             Title: name,
             'Original Title': '',
             URL: '',
-            'Title Type': thetype,
+            'Title Type': specificType,
             'IMDb Rating': rating,
             'Runtime (mins)': '',
             Year: year,

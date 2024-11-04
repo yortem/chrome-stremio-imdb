@@ -7,7 +7,7 @@ Help you open Stremio movies or shows directly from IMDB, Trakt and other sites.
 ## What it does
 
 Add a Stremio button to various sites. The button opens the movie\series page on Stremio.
-On some sites, there's an export button that export list to be used on [journey.co.il/stremio/](https://www.journey.co.il/stremio) in order to create a catalog.
+On some sites, there's an export button that export lists to be used on [journey.co.il/stremio/](https://www.journey.co.il/stremio) in order to create a catalog.
 
 The plugin works on Chrome and on Firefox
 
