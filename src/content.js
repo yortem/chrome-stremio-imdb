@@ -450,7 +450,8 @@ function IMDBLoadList() {
         // Get the year from the first span inside the element with the class "dli-title-metadata"
         const yearElement = item.querySelector(".dli-title-metadata > span");
         const year = yearElement ? yearElement.textContent.trim().split('–')[0].trim() : '';
-
+        const theyear = /^\d{4}$/.test(year) ? year : "";
+        
         // Get the IMDb ID from the link inside the class "ipc-title-link-wrapper"
         const linkElement = item.querySelector(".ipc-title-link-wrapper");
         const imdbId = linkElement ? linkElement.href.match(/tt\d+/)[0] : null;
@@ -471,7 +472,7 @@ function IMDBLoadList() {
             'Title Type': specificType,
             'IMDb Rating': rating,
             'Runtime (mins)': '',
-            Year: year,
+            Year: theyear,
             Genres: '',
             'Num Votes': '',
             'Release Date': '',
