@@ -449,7 +449,7 @@ function IMDBLoadList() {
 
         // Get the year from the first span inside the element with the class "dli-title-metadata"
         const yearElement = item.querySelector(".dli-title-metadata > span");
-        const year = yearElement ? yearElement.textContent.trim() : null;
+        const year = yearElement ? yearElement.textContent.trim().split('–')[0].trim() : '';
 
         // Get the IMDb ID from the link inside the class "ipc-title-link-wrapper"
         const linkElement = item.querySelector(".ipc-title-link-wrapper");
