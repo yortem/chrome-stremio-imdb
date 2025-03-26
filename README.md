@@ -34,7 +34,7 @@ It will search for the movie in your Stremio.
 
 ## Installation
 
-### Install Directly from teh Chrome Store
+### Install Directly from the Chrome Web Store
 
 Click on the link below and add to your chrome
 
