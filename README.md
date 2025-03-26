@@ -34,7 +34,16 @@ It will search for the movie in your Stremio.
 
 ## Installation
 
-[Download the extension](https://github.com/yortem/chrome-stremio-imdb/releases/) for your favorite browser. Unzip the contents and then follow the instructions below.
+### Install Directly from teh Chrome Store
+
+Click on the link below and add to your chrome
+
+
+[![Chrome Web Store](chrome-web-store-badge.png)](https://chromewebstore.google.com/detail/imdb-trakt-open-in-stremi/jlmmgfkhpanoeigimlaadjcdjljihmfb)
+
+### OR install menually from Github
+
+[Download the extension](https://github.com/yortem/chrome-stremio-imdb/releases/) for your favorite browser. Unzip the contents and then follow the instructions below
 
 ### Chromium-based browsers (Chrome, Edge, Brave)
 
