@@ -511,12 +511,12 @@ function IMDBLoadListButton() {
     stremioButton.addEventListener('click', IMDBLoadList);
 
     // Get the .ipc-page-background element and prepend the button to it
-    const pageBackground = document.querySelector('.lkFtOq');
+    const pageBackground = document.querySelector('.cIsnuK');
     if (pageBackground) {
         pageBackground.append(stremioButton);
         stremioButtonAdded = true;
     } else {
-        console.log('OIS: .jfNgiQ element not found');
+        console.log('OIS: .cIsnuK element not found');
     }
 
 }
