@@ -166,12 +166,17 @@ function insertStremioButtonBestSmilar() {
     const items = document.querySelectorAll(".item.item-small");
 
     items.forEach((item) => {
+        
+        // if element doesnt have a name, skip it
+        if (!item.querySelector(".name-c .name")) {
+            return;
+        }
+
         const nameElement = item.querySelector(".name-c .name");
         const idElement = item.querySelector(".fav_btn_img button");
         
-        const ratingspans = item.querySelectorAll(".rat-rating span");
-        const imdbrating = ratingspans[1].textContent.trim();
-
+        const ratingspans = item.querySelectorAll(".rat-rating");
+        const imdbrating = ratingspans[0].outerText.trim();
         if (nameElement && idElement) {
             const nameYear = nameElement.textContent.trim();
             const id = idElement.getAttribute("data-id");
@@ -242,6 +247,7 @@ function insertStremioButtonBestSmilar() {
         textButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 20px;height: 20px;margin-right: 15px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> <span>You can then upload it to <a target="_blank" href="https://www.journey.co.il/stremio/">journey.co.il/stremio/</a> in order to create a catalog based on this list</span>';
 
         const headingExists = document.querySelector('.heading-c');
+
         if (headingExists) {
             
             document.querySelector(`.heading-c`).appendChild(downloadButton);
