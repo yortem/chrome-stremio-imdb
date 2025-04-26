@@ -281,6 +281,21 @@ function downloadCSV() {
 
     var h1Content = document.querySelector('h1').textContent;
 
+    // if url is imdb.com, the title should be all the values of the get parametrs with spaces between words
+
+    if (window.location.hostname === 'www.imdb.com') {
+        const urlParams = new URLSearchParams(window.location.search);
+        var h1Content = '';
+        urlParams.forEach((value, key) => {
+            if (value === 'feature') {
+                value = 'movies';
+            }
+            value = value.replace(/-/g, ' ');
+            value = value.replace(/_/g, ' ');
+            h1Content += value + ' ';
+        });
+    }
+
     const csvData = convertArrayToCSV(moviesforCSV);
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
