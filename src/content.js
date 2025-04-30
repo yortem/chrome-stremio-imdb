@@ -501,17 +501,18 @@ function IMDBLoadListButton() {
     const stremioButton = document.createElement('a');
     stremioButton.innerHTML = '<img title="Download" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span><span id="stremio-text">Download search results</span> (<span class="count-stremio">0</span>)</span>';
     stremioButton.style.cursor = 'pointer'; // Pointer cursor for better UX
-    stremioButton.style.padding = '0px 15px 0px 0px';
     stremioButton.style.border = '2px solid #5c58ee';
     stremioButton.id = 'stremio-button';
     stremioButton.style.padding = '7px';
     stremioButton.style.borderRadius = '20px';
+    stremioButton.style.marginTop = '10px';
+    stremioButton.style.float = 'left';
 
     // Attach the click event to the button
     stremioButton.addEventListener('click', IMDBLoadList);
 
     // Get the .ipc-page-background element and prepend the button to it
-    const pageBackground = document.querySelector('.cIsnuK');
+    const pageBackground = document.querySelector('.ipc-title');
     if (pageBackground) {
         pageBackground.append(stremioButton);
         stremioButtonAdded = true;
