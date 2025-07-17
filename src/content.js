@@ -71,10 +71,10 @@ function insertStremioButtonTrakt() {
 
             // Create the new Stremio button
             const stremioButton = document.createElement('button');
-            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Open in Stremio';
+            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;color: #5c58ee;flex-basis: 69%;">Open in Stremio';
             stremioButton.classList.add('ipc-split-button__btn');
             stremioButton.setAttribute('role', 'button');
-            stremioButton.setAttribute('style', 'width: 100%;border-color: #5c58ee;height:54px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
+            stremioButton.setAttribute('style', 'width: 100%;border-color: #5c58ee;height: calc(18px + 20px);margin-right: 10px;text-align: center;margin-bottom: 5px;background-color: white;display: flex;align-items: center;justify-content: flex-start;');
             stremioButton.setAttribute('tabindex', '0');
             stremioButton.setAttribute('aria-disabled', 'false');
             stremioButton.style.marginRight = '10px';  // Adjust margin as needed
