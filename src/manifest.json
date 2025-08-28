@@ -2,7 +2,7 @@
   "name": "IMDB / Trakt Open in Stremio",
   "description": "Allow you to open movies you see on IMDB or Trakt straight to your Stremio",
   "homepage_url": "https://www.journey.co.il/stremio/",
-  "version": "1.2.58",
+  "version": "1.2.6",
   "manifest_version": 3,
   "icons": {
     "16": "favicon.png",
@@ -18,8 +18,7 @@
       "run_at": "document_idle",
       "js": ["content.js", "bestsimilar.js"],
       "matches": [
-        "https://www.imdb.com/title/*",
-        "https://www.imdb.com/search/*",
+        "https://www.imdb.com/*",
         "https://trakt.tv/movies/*",
         "https://trakt.tv/shows/*",
         "https://letterboxd.com/film/*",
