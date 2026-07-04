@@ -211,7 +211,7 @@ function insertStremioButtonBestSmilar() {
         }
 
         const stremioButton = document.createElement('div');
-        stremioButton.innerHTML = '<a class="stremio-button" style="float: left;margin-left: 10px;padding: 2px 2px 2px 10px;border-left: 1px solid #dddcff;" data-movie-name="'+movie.name+'" href="#"><img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 14px;margin-top: 0px;margin-left: 2px;padding: 4px;float: left;color: #5c58ee;">Open in Stremio</a>';
+        stremioButton.innerHTML = '<a class="stremio-button" style="float: left;margin-left: 10px;padding: 2px 2px 2px 10px;border-left: 1px solid #dddcff;" data-movie-name="'+movie.name+'" href="#"><img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span style="font-weight: bold;font-size: 14px;margin-top: 0px;margin-left: 2px;padding: 4px;float: left;color: #5c58ee;">Open in Stremio</a>';
 
     
         divi.appendChild(stremioButton);
@@ -244,7 +244,7 @@ function insertStremioButtonBestSmilar() {
         const textButton = document.createElement('div');
         textButton.setAttribute('style','float: left;width: calc(100% - 300px);padding: 10px; background-color: white; margin: 10px; border: 2px solid #5c58ee; border-radius: 5px;margin-top: 0px;');
 
-        textButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 20px;height: 20px;margin-right: 15px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> <span>You can then upload it to <a target="_blank" href="https://www.journey.co.il/stremio/">journey.co.il/stremio/</a> in order to create a catalog based on this list</span>';
+        textButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 20px;height: 20px;margin-right: 15px;" src="' + chrome.runtime.getURL('favicon.png') + '"/> <span>You can then upload it to <a target="_blank" href="https://www.journey.co.il/stremio/">journey.co.il/stremio/</a> in order to create a catalog based on this list</span>';
 
         const headingExists = document.querySelector('.heading-c');
 

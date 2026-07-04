@@ -11,7 +11,7 @@ function insertStremioButtonIMDB() {
     if (imdbButton) {
         // Create the new Stremio button
         const stremioButton = document.createElement('button');
-        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 50px;height: 50px;" src="https://www.stremio.com/website/stremio-logo-small.png"/>';
+        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 50px;height: 50px;" src="' + chrome.runtime.getURL('favicon.png') + '"/>';
         stremioButton.classList.add('ipc-split-button__btn');
         stremioButton.setAttribute('role', 'button');
         stremioButton.setAttribute('style', 'width: 50px;background-color: transparent;');
@@ -71,7 +71,7 @@ function insertStremioButtonTrakt() {
 
             // Create the new Stremio button
             const stremioButton = document.createElement('button');
-            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Open in Stremio';
+            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Open in Stremio';
             stremioButton.classList.add('ipc-split-button__btn');
             stremioButton.setAttribute('role', 'button');
             stremioButton.setAttribute('style', 'width: 100%;border-color: #5c58ee;height:54px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
@@ -123,7 +123,7 @@ function insertStremioButtonLetterboxd() {
 
             // Create the new Stremio button
             const stremioButton = document.createElement('button');
-            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 5px;float: left;color: #5c58ee;">Open in Stremio</span>';
+            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 5px;float: left;color: #5c58ee;">Open in Stremio</span>';
             stremioButton.classList.add('ipc-split-button__btn');
             stremioButton.setAttribute('role', 'button');
             stremioButton.setAttribute('style', 'width: 100%;cursor:pointer;border-color: #5c58ee;height:54px;border-radius: 3px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
@@ -173,7 +173,7 @@ function insertStremioButtonRT() {
 
     // Create the new Stremio button
     const stremioButton = document.createElement('button');
-    stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span style="font-weight: bold;font-size: 16px;margin-top: -11px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Search in Stremio';
+    stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span style="font-weight: bold;font-size: 16px;margin-top: -11px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Search in Stremio';
     stremioButton.classList.add('ipc-split-button__btn');
     stremioButton.setAttribute('role', 'button');
     stremioButton.setAttribute('style', 'height:50px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
@@ -232,7 +232,7 @@ function insertStremioButtonTMDB() {
         };
 
         const stremioButton = document.createElement('a');
-        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 46px; height: 46px;" src="https://www.stremio.com/website/stremio-logo-small.png"/>';
+        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 46px; height: 46px;" src="' + chrome.runtime.getURL('favicon.png') + '"/>';
         stremioButton.setAttribute('class', 'stremio-button');
         stremioButton.setAttribute('style', 'margin-left: 10px;');
         stremioButton.setAttribute('data-movie-name', name);
@@ -261,7 +261,7 @@ function insertStremioButtonReddit() {
     if (dropdown) {
         // Create the Stremio button
         const stremioButton = document.createElement('button');
-        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span><span id="stremio-text">Create list</span> (<span class="count-stremio">0</span>)</span>';
+        stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span><span id="stremio-text">Create list</span> (<span class="count-stremio">0</span>)</span>';
         stremioButton.style.marginLeft = '10px'; // Adjust margin as needed
         stremioButton.style.cursor = 'pointer'; // Pointer cursor for better UX
         stremioButton.style.padding = '0px 15px 0px 0px';
@@ -405,7 +405,7 @@ function insertStremioButtonDouban() {
 
     // Create the Stremio button
     const stremioButton = document.createElement('a');
-    stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 30px; height: 30px;" src="https://www.stremio.com/website/stremio-logo-small.png"/> Open in Stremio';
+    stremioButton.innerHTML = '<img title="Open in Stremio" style="width: 30px; height: 30px;" src="' + chrome.runtime.getURL('favicon.png') + '"/> Open in Stremio';
     stremioButton.classList.add('stremio-button');
     stremioButton.href = `stremio:///detail/${type}/${imdbCode}`;
     stremioButton.style.marginTop = '10px';
@@ -499,7 +499,7 @@ function IMDBLoadListButton() {
     
     const dropdown = document.querySelector('h1');
     const stremioButton = document.createElement('a');
-    stremioButton.innerHTML = '<img title="Download" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="https://www.stremio.com/website/stremio-logo-small.png"/><span><span id="stremio-text">Download search results</span> (<span class="count-stremio">0</span>)</span>';
+    stremioButton.innerHTML = '<img title="Download" style="width: 20px; height: 20px; vertical-align: middle; margin: 5px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span><span id="stremio-text">Download search results</span> (<span class="count-stremio">0</span>)</span>';
     stremioButton.style.cursor = 'pointer'; // Pointer cursor for better UX
     stremioButton.style.border = '2px solid #5c58ee';
     stremioButton.id = 'stremio-button';
