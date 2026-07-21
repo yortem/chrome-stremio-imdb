@@ -55,57 +55,52 @@ function insertStremioButtonTrakt() {
     if (stremioButtonAdded) return;
     console.log('OIS: Run Trakt function');
 
-    const episodeMatch = window.location.href.match(/\/seasons\/(\d+)\/episodes\/(\d+)/);
-    if (episodeMatch) {
-        return false;
+    if (!window.location.pathname.includes('/shows/') && !window.location.pathname.includes('/movies/')) {
+        return;
     }
 
-    // Check if the current URL contains '/shows/' (for TV shows) or '/movies/' (for movies)
-    if (window.location.href.includes('/shows/') || window.location.href.includes('/movies/')) {
-        console.log('OIS: Detected page');
-        // Get the IMDb ID from the external link on Trakt.tv
-        const imdbLinkElement = document.getElementById('external-link-imdb');
-        if (imdbLinkElement) {
-            console.log('OIS: Detected imdb');
-            const imdbId = imdbLinkElement.getAttribute('href').split('/').pop(); // Extract IMDb ID from the href attribute
-
-            // Create the new Stremio button
-            const stremioButton = document.createElement('button');
-            stremioButton.innerHTML = '<img title="Open in Stremio" style="float: left;width: 30px;height: 30px;" src="' + chrome.runtime.getURL('favicon.png') + '"/><span style="font-weight: bold;font-size: 16px;margin-left: 10px;padding: 4px;float: left;color: #5c58ee;">Open in Stremio';
-            stremioButton.classList.add('ipc-split-button__btn');
-            stremioButton.setAttribute('role', 'button');
-            stremioButton.setAttribute('style', 'width: 100%;border-color: #5c58ee;height:54px;margin-right: 10px;text-align: left;margin-bottom: 5px;background-color: white;');
-            stremioButton.setAttribute('tabindex', '0');
-            stremioButton.setAttribute('aria-disabled', 'false');
-            stremioButton.style.marginRight = '10px';  // Adjust margin as needed
-
-            // Add click event listener to open Stremio link
-            stremioButton.addEventListener('click', function() {
-                let stremioLink = `stremio:///detail/movie/${imdbId}`;
-
-                if (window.location.href.includes('/shows/')) {
-                    stremioLink = `stremio:///detail/series/${imdbId}`;
-                }
-
-                // Open the link using a temporary anchor element
-                const tempLink = document.createElement('a');
-                tempLink.href = stremioLink;
-                tempLink.target = '_self';
-                tempLink.style.display = 'none';
-                document.body.appendChild(tempLink);
-                tempLink.click();
-                document.body.removeChild(tempLink);
-            });
-
-            // Find the action-buttons element on the page
-            const actionButtons = document.querySelector('.action-buttons');
-            if (actionButtons) {
-                // Insert the Stremio button before the first child of action-buttons
-                actionButtons.insertBefore(stremioButton, actionButtons.firstChild);
-                stremioButtonAdded = true;
-            }
+    const observer = new MutationObserver(() => {
+        if (stremioButtonAdded) {
+            observer.disconnect();
+            return;
         }
-    }
+
+        const scrollContainer = document.querySelector('.trakt-list-item-container');
+        if (!scrollContainer) return;
+
+        const imdbLink = document.querySelector('a[href*="imdb.com/title/tt"]');
+        if (!imdbLink) return;
+
+        const imdbIdMatch = imdbLink.getAttribute('href').match(/tt\d+/);
+        if (!imdbIdMatch) return;
+
+        observer.disconnect();
+
+        const imdbId = imdbIdMatch[0];
+        const type = window.location.pathname.includes('/shows/') ? 'series' : 'movie';
+        const stremioHref = `stremio:///detail/${type}/${imdbId}`;
+
+        const existingItem = scrollContainer.querySelector('.trakt-where-to-watch-item');
+        if (!existingItem) return;
+
+        const stremioItem = existingItem.cloneNode(true);
+
+        const link = stremioItem.querySelector('a');
+        if (link) link.href = stremioHref;
+
+        const logoContainer = stremioItem.querySelector('.trakt-where-to-watch-logo');
+        if (logoContainer) {
+            logoContainer.innerHTML = `<div class="trakt-streaming-service-logo svelte-1jvqy9q"><img src="${chrome.runtime.getURL('favicon.png')}" alt="Open in Stremio" style="width:40px;height:40px;object-fit:contain;"></div>`;
+        }
+
+        const label = stremioItem.querySelector('p');
+        if (label) label.textContent = 'Stremio';
+
+        scrollContainer.insertBefore(stremioItem, scrollContainer.firstChild);
+        stremioButtonAdded = true;
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 
 function insertStremioButtonLetterboxd() {
@@ -526,10 +521,12 @@ function runStremioButtons() {
     console.log('OIS: Functions run');
     if (window.location.hostname === 'www.imdb.com') {
         insertStremioButtonIMDB();
-        IMDBLoadListButton();
+        if (window.location.pathname.includes('/search/') || window.location.pathname.includes('/list/')) {
+            IMDBLoadListButton();
+        }
     }
 
-    if (window.location.hostname === 'trakt.tv') {
+    if (window.location.hostname === 'trakt.tv' || window.location.hostname === 'app.trakt.tv') {
         insertStremioButtonTrakt();
     }
 
