@@ -7,16 +7,15 @@ jobs:
     permissions:
       contents: write
     name: Build extensions
-    runs-on: ubuntu-latest # use 'macos-latest' for safari builds, see https://bepp.pigeonposse.com/guide/gh-action#usage for more details
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Build extension with BEPP
-        uses: pigeonposse/bepp@v1.1.0
-      # publish a release if a tag has been pushed
+      - name: Create extension zip
+        run: |
+          mkdir -p build
+          cd src
+          zip -r ../build/extension.zip .
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
